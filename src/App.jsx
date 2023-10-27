@@ -123,7 +123,7 @@ function App() {
 export default App*/
 
 
-import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
+/*import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 
 
 function randomID(len) {
@@ -138,6 +138,7 @@ function randomID(len) {
   }
   return result;
 }
+
 
 export function getUrlParams(
   url = window.location.href
@@ -185,4 +186,129 @@ export default function App() {
       style={{ width: '100vw', height: '100vh' }}
     ></div>
   );
+}*/
+
+
+//memoization//
+
+// 
+
+//usememo()//
+
+// import { useState,useMemo } from "react";
+// const App=()=>{
+//   const[count,setcount]=useState(0)
+//   const power=()=>{
+//     return count**2
+//   }
+//   const memo=useMemo(()=>power(count))
+//   return(
+//     <div>
+//       <h1>count:{count}</h1>
+//       <h1>power:{memo}</h1>
+//       <button onClick={()=>setcount(count+1)}>+</button>
+//     </div>
+//   )
+// }
+// export default App
+
+// import { useState,useRef,useEffect } from "react";
+// const App=()=>{
+//   const[name,setName]=useState("")
+//   const count=useRef(0)
+//   useEffect(()=>{
+//     return()=>{
+//       count.current=count.current+1
+//     }
+//   },[name])
+//   return(
+//     <div>
+//       <input type="text" onChange={(e)=>setName(e.target.value)} />
+//       <h1>My Name is:{name} </h1>
+//       <h1>count:{count.current}</h1>
+//     </div>
+//   )
+// }
+// export default App
+
+// import React, { useState, useRef } from 'react';
+
+// function App() {
+//   const inputRef = useRef(null);
+//   const boxRef = useRef(null);
+//   const [inputValue, setInputValue] = useState('');
+
+//   const handleFocus = () => {
+//     inputRef.current.focus();
+//   };
+
+//   const handleInputChange = (e) => {
+//     setInputValue(e.target.value);
+//   };
+
+//   const handleTarget = () => {
+//     boxRef.current.innerText = inputValue;
+//   };
+
+//   return (
+//     <div>
+//       <input
+//         ref={inputRef}
+//         type="text"
+//         placeholder="Type something..."
+//         onChange={handleInputChange}
+//       />
+//       <button onClick={handleFocus}>Focus Input</button>
+//       <button onClick={handleTarget}>Target Box</button>
+//       <div ref={boxRef} style={{ marginTop: '20px', border: '1px solid black', padding: '10px' }}>
+      
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App
+
+
+
+import React, { useEffect, useRef } from 'react';
+
+function CameraComponent() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    // Function to start the webcam stream
+    const startWebcam = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (error) {
+        console.error('Error accessing webcam:', error);
+      }
+    };
+
+    startWebcam();
+
+    // Function to stop the webcam when the component unmounts
+    return () => {
+      if (videoRef.current) {
+        const stream = videoRef.current.srcObject;
+        if (stream) {
+          const tracks = stream.getTracks();
+          tracks.forEach(track => track.stop());
+        }
+      }
+    };
+  }, []);
+
+  return (
+    <div>
+      <h1>Camera Component</h1>
+      <video ref={videoRef} autoPlay playsInline />
+    </div>
+  );
 }
+
+export default CameraComponent;

@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.fetching_img{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.image_ img{
+    width: max-content;
+    height: max-content;
+}
+.Pixaby_nav{
+width: 100%;
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 15%;
+flex-wrap: wrap;
+}
+
+.Pixaby_nav div{
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.Pixaby_header{
+    background-image: url("https://images5.alphacoders.com/132/thumbbig-1325121.webp");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 80vh;
+    color: white;
+}
+.pixaby_main{
+    width: 100%;
+    min-height:50vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.pixaby_main h1{
+    font-size: 300%;
+}
+.pixaby_main div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.search_input{
+    margin-top: 15px;
+    width: 60%;
+    height: 50px;
+    border-radius: 40px;
+    text-align: center;
+}
+.upload_button{
+    width: 100px;
+    height: 30px;
+    color: black;
+    background-color:#15BC8D;
+    border-radius: 30px;
+
+}

@@ -269,46 +269,290 @@ export default function App() {
 
 // export default App
 
+//CAMERA OPEN DEMO//
+
+// import React, { useEffect, useRef } from 'react';
+
+// function CameraComponent() {
+//   const videoRef = useRef(null);
+
+//   useEffect(() => {
+//     // Function to start the webcam stream
+//     const startWebcam = async () => {
+//       try {
+//         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+//         if (videoRef.current) {
+//           videoRef.current.srcObject = stream;
+//         }
+//       } catch (error) {
+//         console.error('Error accessing webcam:', error);
+//       }
+//     };
+
+//     startWebcam();
+
+//     // Function to stop the webcam when the component unmounts
+//     return () => {
+//       if (videoRef.current) {
+//         const stream = videoRef.current.srcObject;
+//         if (stream) {
+//           const tracks = stream.getTracks();
+//           tracks.forEach(track => track.stop());
+//         }
+//       }
+//     };
+//   }, []);
+
+//   return (
+//     <div>
+//       <h1>Camera Component</h1>
+//       <video ref={videoRef} autoPlay playsInline />
+//     </div>
+//   );
+// }
+
+// export default CameraComponent;
 
 
-import React, { useEffect, useRef } from 'react';
 
-function CameraComponent() {
-  const videoRef = useRef(null);
+//VIDEO PLAY DEMO//
+
+// import React, { useState,useRef } from 'react';
+// import Video from './Video/video.mp4'
+// function App(){
+//   const[playing,setPlaying]=useState(false);
+//   const ref=useRef(null);
+
+//   function handleClick(){
+//     const nextIsPlaying=!playing;
+//     setPlaying(nextIsPlaying);
+
+//     if(nextIsPlaying){
+//       ref.current.play();
+//     }else{
+//       ref.current.pause();
+//     }
+//   }
+//   return(
+//     <>
+//     <button onClick={handleClick}>{playing ? 'Pause':'Play'}</button>
+//     <video src={Video} height={'500px'} width='100%' ref={ref} onPlay={()=>setPlaying(true)}></video>
+//     </>
+//   );
+// }
+// export default App
+
+
+
+// import React, { useState, useRef } from 'react';
+
+// const VideoPlayer = () => {
+//   const [isPlaying, setIsPlaying] = useState(false);
+//   const videoRef = useRef(null);
+
+//   const togglePlay = () => {
+//     if (videoRef.current) {
+//       if (isPlaying) {
+//         videoRef.current.pause();
+//       } else {
+//         videoRef.current.play();
+//       }
+//       setIsPlaying(!isPlaying);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <video ref={videoRef} width="640" height="360" controls>
+//         <source src="./Video/video.mp4" type="video/mp4" />
+//       </video>
+//       <button onClick={togglePlay}>
+//         {isPlaying ? 'Pause' : 'Play'}
+//       </button>
+
+
+//       <video ref={videoRef} width="640" height="360" controls>
+//       <source src="./Video/Spiderman.mp4" type="video/mp4" />
+//       </video><br />
+//       <button onClick={togglePlay}>
+//         {isPlaying ? 'Pause1' : 'Play1'}
+//       </button>
+
+
+//     </div>
+//   );
+// };
+
+// export default VideoPlayer;
+
+
+// import React from 'react';
+// import './App.css';
+// import Home from './Home';
+// import About from './About';
+// import Projects from './Projects';
+// import Contact from './Contact';
+// import FacebookLogo from './FacebookLogo';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <nav>
+//         <ul>
+//           <li><a href="#home">Home</a></li>
+//           <li><a href="#about">About</a></li>
+//           <li><a href="#projects">Projects</a></li>
+//           <li><a href="#contact">Contact</a></li>
+//         </ul>
+//       </nav>
+
+//       <div id="home">
+//         <Home />
+//       </div>
+
+//       <div id="about">
+//         <About />
+//       </div>
+
+//       <div id="projects">
+//         <Projects />
+//       </div>
+
+//       <div id="contact">
+//         <Contact />
+//       </div>
+
+//       <footer>
+//         <FacebookLogo />
+//       </footer>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+// import { useEffect, useState } from 'react'
+// // import './App.css'
+// // import Navbar from './Navbar.jsx'
+
+// const App = () => {
+
+//   const [data, setData] = useState([])
+//   const [search, setSearch] = useState("")
+
+//   useEffect(() => {
+//     fetch(`https://pixabay.com/api/?key=40363756-160f89c7768a2a4e2b0888016&q=${search}&image_type=photo&pretty=true`)
+//       .then(res => res.json())
+//       .then(d => setData(d.hits))
+//   }, [data])
+
+//   return (
+//     <div className="App">
+//       <Navbar />
+//       <center><input type="text" onChange={(e) => setSearch(e.target.value)}></input></center>
+//       {data.map((x) => {
+//         return (
+//           <section key={x.type} className="secimg">
+//             <img src={x.webformatURL} height={x.webformatHeight} width={x.webformatWidth}></img>
+//           </section>
+//         )
+//       })}
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+// import { useEffect, useState } from 'react'
+// import Navbar from './Pixabay2.0/Navbar.jsx'
+
+// const App = () => {
+
+//   const [data, setData] = useState([])
+//   const [search, setSearch] = useState("")
+
+//   useEffect(() => {
+//     fetch(`https://pixabay.com/api/?key=40363756-160f89c7768a2a4e2b0888016&q=${search}&image_type=photo&pretty=true`)
+//       .then(res => res.json())
+//       .then(d => setData(d.hits))
+//   }, [data])
+
+//   return (
+//     <div className="App">
+//       <Navbar />
+//       <center><input type="text" onChange={(e) => setSearch(e.target.value)}></input></center>
+//       {data.map((x) => {
+//         return (
+//           <section key={x.type} className="secimg">
+//             <img src={x.webformatURL} height={x.webformatHeight} width={x.webformatWidth}></img>
+//           </section>
+//         )
+//       })}
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+import { useEffect, useState } from 'react'
+import Navbar from './New_folder/Navbar'
+
+const App = () => {
+
+  const [data, setData] = useState([])
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
-    // Function to start the webcam stream
-    const startWebcam = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
-      } catch (error) {
-        console.error('Error accessing webcam:', error);
-      }
-    };
-
-    startWebcam();
-
-    // Function to stop the webcam when the component unmounts
-    return () => {
-      if (videoRef.current) {
-        const stream = videoRef.current.srcObject;
-        if (stream) {
-          const tracks = stream.getTracks();
-          tracks.forEach(track => track.stop());
-        }
-      }
-    };
-  }, []);
+    fetch(`https://pixabay.com/api/?key=40363756-160f89c7768a2a4e2b0888016&q=${search}&image_type=photo&pretty=true`)
+      .then(res => res.json())
+      .then(d => setData(d.hits))
+  }, [data])
 
   return (
-    <div>
-      <h1>Camera Component</h1>
-      <video ref={videoRef} autoPlay playsInline />
+    <div className="App">
+      <Navbar />
+      <center><input type="text" onChange={(e) => setSearch(e.target.value)}></input></center>
+      {data.map((x) => {
+        return (
+          <section key={x.type} className="secimg">
+            <img src={x.webformatURL} height={x.webformatHeight} width={x.webformatWidth}></img>
+          </section>
+        )
+      })}
     </div>
-  );
+  )
 }
 
-export default CameraComponent;
+export default App
+
+
+// import React,{useReducer} from 'react'
+
+// const App = () => {
+//   const initialState=0
+//   const[count,dispatch]=useReducer(reducer,initialState)
+//   function reducer(state,action){
+//     switch(action){
+//       case "incre":
+//       return state+1
+
+//       case "decre":
+//         return state-1 
+//         default:
+//           return state
+//     }
+//   }
+//   return (
+//     <div>
+//       <h1>Count:{count}</h1>
+//       <button onClick={()=>dispatch("incre")}>+</button>
+//       <button onClick={()=>dispatch("decre")}>-</button>
+//     </div>
+//   )
+// }
+
+// export default App
